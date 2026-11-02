@@ -364,16 +364,21 @@ gcloud storage rm -r gs://${PROJECT_ID}-tfstate
 ## Screenshots
 
 **`terraform apply` output**
+
 ![Apply](assets/apply.png)
 
 **VM access check (read OK, write blocked)**
+
 ![Access check](assets/access_check.png)
 
 **`terraform test` passing**
+
 ![Tests](assets/tests.png)
 
 **Resources in the GCP console**
+
 ![Console](assets/console.png)
 
 **New model version published (versioning keeps the old one)**
+
 ![Changes](assets/changes.png)
