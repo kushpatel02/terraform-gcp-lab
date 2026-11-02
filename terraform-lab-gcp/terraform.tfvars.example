@@ -1,0 +1,9 @@
+# Copy to terraform.tfvars and set your project ID. terraform.tfvars is gitignored.
+project_id = "your-project-id"
+
+# Optional overrides
+# region        = "us-central1"
+# zone          = "us-central1-a"
+# machine_type  = "e2-micro"
+# model_version = "1.0.0"
+# keep_versions = 3

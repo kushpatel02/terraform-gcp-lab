@@ -1,0 +1,15 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+!*.tfvars.example
+*.tfplan
+
+# Credentials (never commit)
+*.json.key
+*-key.json
+credentials*.json
+
+.DS_Store

@@ -1,0 +1,24 @@
+#!/bin/bash
+# Runs at boot. Output appears in the VM's serial console.
+MODEL_URI="${model_uri}"
+BUCKET="${bucket}"
+
+# 1. Read the model (should succeed). Retry while the new IAM binding propagates.
+MODEL=""
+for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
+  if MODEL=$(gcloud storage cat "$MODEL_URI" 2>/dev/null); then
+    echo "MODEL_READ_OK: $MODEL"
+    break
+  fi
+  echo "MODEL_READ_RETRY $i: waiting for IAM to propagate"
+  sleep 10
+done
+if [ -z "$MODEL" ]; then echo "MODEL_READ_FAILED"; fi
+
+# 2. Try to write (should be blocked, the service account is read-only)
+echo "probe" > /tmp/probe.txt
+if gcloud storage cp /tmp/probe.txt "gs://$BUCKET/probe.txt" >/dev/null 2>&1; then
+  echo "WRITE_ALLOWED: unexpected, check IAM"
+else
+  echo "WRITE_BLOCKED: expected, the VM service account is read-only"
+fi
