@@ -1,4 +1,4 @@
-# Terraform Lab (GCP): Secure ML Artifact Environment
+# Terraform Lab (GCP): Secure ML Artifact Environment (Lab3)
 
 Infrastructure-as-code lab that uses **Terraform** to provision a small, secure ML environment on **Google Cloud**: a private VM, a hardened and versioned model-artifact bucket, least-privilege IAM, and **remote Terraform state stored in Cloud Storage**. It includes offline tests that run without any cloud credentials.
 
